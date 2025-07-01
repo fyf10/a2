@@ -1,4 +1,4 @@
-FROM ghcr.nju.edu.cn/fyf10/db-s:stable-slim
+FROM debian:stable-slim
 
 # 安装依赖
 RUN apt-get update && apt-get install -y \
