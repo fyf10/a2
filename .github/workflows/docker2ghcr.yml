@@ -16,7 +16,7 @@ on:
       target_platforms:
         description: 'Target Platforms (comma separated)'
         required: true
-        default: 'linux/amd64,linux/arm64'
+        default: 'linux/amd64'
 
 env:
   REGISTRY: ghcr.io
