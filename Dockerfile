@@ -11,6 +11,7 @@ COPY aria2c /usr/local/bin/aria2c
 COPY ariang /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY aria2.conf /etc/aria2/aria2.conf
+COPY start.sh /
 
 # 创建配置和下载目录
 RUN mkdir -p /etc/aria2 /data/downloads && \
