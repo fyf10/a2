@@ -51,7 +51,7 @@ jobs:
       - name: Parse target platforms
         id: platform
         run: |
-          PLATFORMS=$(echo '${{ inputs.target_platforms || 'linux/amd64,linux/arm64' }}' | tr ',' '\n' | awk '{ printf "--platform=" $1 " " }')
+          PLATFORMS=$(echo '${{ inputs.target_platforms || 'linux/amd64' }}' | tr ',' '\n' | awk '{ printf "--platform=" $1 " " }')
           echo "PLATFORMS_STR=$PLATFORMS" >> $GITHUB_OUTPUT
 
       - name: Build and push
