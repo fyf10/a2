@@ -21,4 +21,4 @@ RUN mkdir -p /etc/aria2 /data/downloads && \
 EXPOSE 80
 
 # 启动脚本
-CMD ["sh", "-c", "aria2c --conf-path=/etc/aria2/aria2.conf -D && nginx -g 'daemon off;'"]
+CMD ["/start.sh"]
