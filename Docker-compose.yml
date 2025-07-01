@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  aria2-all-in-one:
+    container_name: aria2-container
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - ./downloads:/data/downloads
+      - ./aria2-config:/etc/aria2
+    restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=1000
+    networks:
+      - aria2-network
+
+networks:
+  aria2-network:
+    driver: bridge
