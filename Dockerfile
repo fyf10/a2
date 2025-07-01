@@ -11,12 +11,6 @@ COPY aria2c /usr/local/bin/aria2c
 COPY ariang /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY aria2.conf /etc/aria2/aria2.conf
-COPY core /etc/aria2/
-COPY clean.sh /etc/aria2/clean.sh
-COPY delete.sh /etc/aria2/delete.sh
-
-
-
 
 # 创建配置和下载目录
 RUN mkdir -p /etc/aria2 /data/downloads && \
