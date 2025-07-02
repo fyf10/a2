@@ -16,13 +16,13 @@ COPY aria2c /usr/local/bin/aria2c
 COPY aria2.conf /etc/aria2.conf
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY ariang /usr/share/nginx/html
-COPY start.sh /start.sh  # 复制启动脚本
+COPY start.sh /start.sh
 
 # 创建下载目录和日志
 RUN mkdir -p /downloads && \
     touch /var/log/aria2.log && \
     chmod 777 /var/log/aria2.log /downloads && \
-    chmod +x /start.sh  # 添加执行权限
+    chmod +x /start.sh
 
 # 暴露端口
 EXPOSE 80 6800
