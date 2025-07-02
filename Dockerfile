@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /app
 
 ENV PATH="/usr/local/bin/python3:${PATH}"
-
+ENV PATH="/usr/local/bin/aria2c:${PATH}"
 # 复制文件
 COPY aria2c /usr/local/bin/aria2c
 COPY aria2.conf /etc/aria2.conf
@@ -25,7 +25,6 @@ RUN mkdir -p /downloads && \
     touch /var/log/aria2.log && \
     chmod 777 /var/log/aria2.log /downloads && \
     chmod +x /start.sh
-USER nonrootuser
 # 暴露端口
 EXPOSE 80 6800
 
