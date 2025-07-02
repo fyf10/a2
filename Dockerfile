@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y \
     nginx \
     libssl-dev \
     libc-ares-dev \
-    procps \  # 添加pgrep命令依赖
+    procps \
     && rm -rf /var/lib/apt/lists/*
 
 # 设置工作目录
