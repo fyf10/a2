@@ -3,16 +3,8 @@ FROM debian:stable
 # 安装依赖
 RUN apt-get update && apt-get install -y \
     nginx \
-    libssl-dev \
-    libc-ares-dev \
-    procps \
     && rm -rf /var/lib/apt/lists/*
 
-# 设置工作目录
-WORKDIR /app
-
-ENV PATH="/usr/local/bin/python3:${PATH}"
-ENV PATH="/usr/local/bin/aria2c:${PATH}"
 # 复制文件
 COPY aria2c /usr/local/bin/aria2c
 COPY aria2.conf /etc/aria2.conf
