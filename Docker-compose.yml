@@ -1,23 +1,35 @@
 version: '3.8'
 
 services:
-  aria2-all-in-one:
-    container_name: aria2-container
-    build: 
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "8080:80"
-    volumes:
-      - ./downloads:/data/downloads
-      - ./aria2-config:/etc/aria2
+  aria2-ariang:
+    build: .  # 使用当前目录的 Dockerfile 构建
+    container_name: aria2-ariang
     restart: unless-stopped
+    ports:
+      - "8080:80"       # Web 访问端口
+      - "6800:6800"     # RPC 端口
+      # 如果需要 BT/DHT 功能，取消下面两行注释
+      # - "6881:6881"    # BT 端口 (TCP)
+      # - "6881:6881/udp" # DHT 端口 (UDP)
+    volumes:
+      - ./downloads:/downloads   # 下载目录
+      - ./aria2.session:/etc/aria2.session  # 会话文件
+      # 可选：挂载配置文件用于热更新（需要时取消注释）
+      # - ./aria2.conf:/etc/aria2.conf
+      # - ./nginx.conf:/etc/nginx/nginx.conf
     environment:
-      - PUID=1000
-      - PGID=1000
-    networks:
-      - aria2-network
+      TZ: Asia/Shanghai  # 设置时区
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
-networks:
-  aria2-network:
-    driver: bridge
+volumes:
+  # 如果希望使用命名卷而不是本地目录，可以这样定义：
+  # downloads:
+  #   driver: local
+  #   driver_opts:
+  #     type: none
+  #     o: bind
+  #     device: ./downloads
