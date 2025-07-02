@@ -11,6 +11,8 @@ RUN apt-get update && apt-get install -y \
 # 设置工作目录
 WORKDIR /app
 
+ENV PATH="/usr/local/bin/python3:${PATH}"
+
 # 复制文件
 COPY aria2c /usr/local/bin/aria2c
 COPY aria2.conf /etc/aria2.conf
