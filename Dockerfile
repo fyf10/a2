@@ -23,7 +23,7 @@ RUN mkdir -p /downloads && \
     touch /var/log/aria2.log && \
     chmod 777 /var/log/aria2.log /downloads && \
     chmod +x /start.sh
-
+USER nonrootuser
 # 暴露端口
 EXPOSE 80 6800
 
