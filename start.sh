@@ -1,3 +1,4 @@
 #!/bin/sh
-aria2c --conf-path=/etc/aria2/aria2.conf --daemon
+aria2c --enable-rpc --rpc-listen-all=false --rpc-allow-origin-all -c -D
+aria2c --conf-path=/root/.config/aria2/aria2.conf -D
 nginx -g "daemon off;"
