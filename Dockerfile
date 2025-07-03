@@ -15,7 +15,7 @@ COPY ariang.conf /etc/nginx/conf.d/ariang.conf
 COPY ariang /var/www/html/ariang
 
 WORKDIR /app
-COPY start.sh /app
+COPY start.sh ./
 
 # 创建下载目录和日志
 RUN chmod +x /usr/local/bin/aria2c
