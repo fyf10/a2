@@ -7,18 +7,18 @@ RUN apt-get update && apt-get install -y \
 
 # 复制文件
 COPY aria2c /usr/local/bin/aria2c
-COPY aria2.conf /etc/aria2.conf
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY ariang /usr/share/nginx/html
+COPY aria2.conf /root/.config/aria2/aria2.conf
+COPY aria2.session /root/.config/aria2/aria2.session
+COPY ariang.conf /etc/nginx/conf.d/ariang.conf
+COPY ariang /var/www/html/
 COPY start.sh /start.sh
 
 # 创建下载目录和日志
-RUN mkdir -p /downloads && \
-    touch /var/log/aria2.log && \
-    chmod 777 /var/log/aria2.log /downloads && \
-    chmod +x /start.sh
+RUN chmod +x /usr/local/bin/aria2c
+RUN chmod +x /start.sh
+
 # 暴露端口
-EXPOSE 80 6800
+EXPOSE 8089
 
 # 使用启动脚本
 CMD ["/start.sh"]
