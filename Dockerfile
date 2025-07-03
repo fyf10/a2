@@ -1,4 +1,4 @@
-FROM debian:stable
+FROM debian:stable-slim
 
 # 安装依赖
 RUN apt-get update && apt-get install -y \
