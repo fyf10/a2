@@ -25,4 +25,4 @@ RUN chmod +x start.sh
 EXPOSE 8089
 
 # 使用启动脚本
-CMD ["/start.sh"]
+CMD ["./start.sh"]
