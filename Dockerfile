@@ -6,14 +6,14 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # 复制文件
-COPY aria2c /usr/local/bin/aria2c
-COPY aria2.conf /root/.config/aria2/aria2.conf
-COPY aria2.session /root/.config/aria2/aria2.session
-COPY dht.dat /root/.config/aria2/dht.dat
-COPY dht6.dat /root/.config/aria2/dht6.dat
-COPY ariang.conf /etc/nginx/conf.d/ariang.conf
+COPY aria2c /usr/local/bin/
+COPY aria2.conf /root/.config/aria2/
+COPY aria2.session /root/.config/aria2/
+COPY dht.dat /root/.config/aria2/
+COPY dht6.dat /root/.config/aria2/
+COPY ariang.conf /etc/nginx/conf.d/
 COPY ariang /var/www/html/
-COPY start.sh /start.sh
+COPY start.sh /
 
 # 创建下载目录和日志
 RUN chmod +x /usr/local/bin/aria2c
