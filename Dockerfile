@@ -13,7 +13,9 @@ COPY dht.dat /root/.config/aria2/dht.dat
 COPY dht6.dat /root/.config/aria2/dht6.dat
 COPY ariang.conf /etc/nginx/conf.d/ariang.conf
 COPY ariang /var/www/html/ariang
-COPY start.sh /start.sh
+
+WORKDIR /app
+COPY start.sh ./
 
 # 创建下载目录和日志
 RUN chmod +x /usr/local/bin/aria2c
