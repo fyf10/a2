@@ -19,7 +19,7 @@ COPY start.sh ./
 
 # 创建下载目录和日志
 RUN chmod +x /usr/local/bin/aria2c
-RUN chmod +x /start.sh
+RUN chmod +x start.sh
 
 # 暴露端口
 EXPOSE 8089
