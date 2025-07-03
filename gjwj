@@ -1,4 +1,5 @@
 var/www/html/  ariang
+/etc/nginx/conf.d/  ariang.conf
 /root/.config/aria2/  aria2.conf
 /root/.config/aria2/  aria2.session  一定要新建
 /usr/local/bin/   aria2c
