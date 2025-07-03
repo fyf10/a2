@@ -1,0 +1,62 @@
+name: 构建并推送 Docker 镜像
+
+on:
+  push:
+    branches: [ main ]   # 推送到 main 分支时触发
+  workflow_dispatch:     # 允许手动触发
+    inputs:
+      image_name:
+        description: '镜像名称（如：my-app）'
+        required: true
+        default: 'my-app'
+      tags:
+        description: '逗号分隔的标签（如：latest,v1.0）'
+        required: true
+        default: 'latest'
+      platforms:
+        description: '目标架构（如：linux/amd64,linux/arm64）'
+        required: true
+        default: 'linux/amd64'
+
+env:
+  REGISTRY: ghcr.io  # GitHub 容器注册表
+  # 镜像路径格式：ghcr.io/<你的用户名>/<镜像名称>
+  IMAGE_NAME: ${{ github.repository_owner }}/${{ inputs.image_name }}
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read    # 读取代码权限
+      packages: write   # 写入镜像权限
+
+    steps:
+      # 步骤 1：检出代码
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      # 步骤 2：登录 GHCR
+      - name: 登录到 GitHub 容器注册表
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}          # 自动使用触发者用户名
+          password: ${{ secrets.GITHUB_TOKEN }}  # 自动认证令牌
+
+      # 步骤 3：设置多架构构建环境
+      - name: 配置 Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # 步骤 4：构建并推送镜像
+      - name: 构建推送镜像
+        uses: docker/build-push-action@v5
+        with:
+          context: .  # 使用当前目录作为构建上下文
+          platforms: ${{ inputs.platforms }}  # 用户指定的架构
+          tags: |      # 自动生成完整镜像路径
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ matrix.tag }}
+          push: true   # 构建后立即推送
+        strategy:
+          matrix:
+            # 将逗号分隔的标签转换为数组（如 "latest,v1" → ["latest","v1"]）
+            tag: ${{ fromJSON(format('["{0}"]', replace(inputs.tags, ',', '","')) }}
