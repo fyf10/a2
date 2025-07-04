@@ -15,7 +15,7 @@ COPY aria2.conf /root/.config/aria2/
 COPY aria2.session /root/.config/aria2/
 COPY dht*.dat /root/.config/aria2/
 COPY ariang.conf /etc/nginx/conf.d/
-COPY ariang/ /var/www/html/ariang
+COPY ariang/ /var/www/html/ariang/
 
 # 复制启动脚本并设置工作目录
 WORKDIR /app
