@@ -15,7 +15,7 @@ services:
       - PGID=
       - TZ=Asia/Shanghai
     volumes:
-      - ./downloads:/root/downloads   # 下载目录
+      - ./downloads:/root/download   # 下载目录
       # - ./aria2.session:/etc/aria2.session  # 会话文件
       # 可选：挂载配置文件用于热更新（需要时取消注释）
       # - ./aria2.conf:/etc/aria2.conf
