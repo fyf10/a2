@@ -5,7 +5,7 @@ on:
     inputs:
       image_name:
         description: '镜像名称 (例如: my-app)'
-        required: true
+        default: 'my-app'
       tag:
         description: '镜像标签 (默认: latest)'
         default: 'latest'
