@@ -4,7 +4,7 @@ FROM debian:stable
 RUN apt-get update && \
     apt-get install -y --no-install-recommends nginx ca-certificates && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /etc/nginx/nginx.conf /var/lib/apt/lists/*
 
 # 创建必要的目录结构
 RUN mkdir -p /var/www/html/ariang
