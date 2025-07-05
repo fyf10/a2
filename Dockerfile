@@ -18,10 +18,7 @@ COPY nginx.conf /etc/nginx/conf.d/
 COPY ariang/ /var/www/html/ariang/
 
 # 暴露端口
-EXPOSE 80 6800 8089
+EXPOSE 80 6800 8089 16800
 
 # 启动脚本
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-
-ENTRYPOINT ["/entrypoint.sh"]
+CMD ["nginx", "-g", "daemon off;"]
