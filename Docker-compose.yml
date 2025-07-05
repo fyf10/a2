@@ -8,7 +8,6 @@ services:
     environment:
       - PUID=
       - PGID=
-      - LISTEN_PORT=6888
       - DISK_CACHE=64M
       - TZ=Asia/Shanghai
     volumes:
