@@ -1,4 +1,4 @@
-FROM debian:stable-slim
+FROM debian:stable
 
 # 一次性安装所有依赖并清理缓存
 RUN apt-get update && \
