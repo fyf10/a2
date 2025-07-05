@@ -2,8 +2,6 @@
 FROM nginx:alpine
 
 COPY ariang/ /usr/share/nginx/html/ariang/
-
-# 复制自定义配置（如果存在）
 COPY nginx.conf /etc/nginx/conf.d/
-
+RUN chmod 755 /usr/share/nginx/html/ariang
 EXPOSE 16800
