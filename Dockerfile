@@ -14,7 +14,7 @@ RUN mkdir -p /home/aria2 /var/www/html/ariang
 COPY aria2.conf /home/aria2/
 COPY aria2.session /home/aria2/
 COPY dht*.dat /home/aria2/
-COPY ariang.conf /etc/nginx/conf.d/
+COPY nginx.conf /etc/nginx/conf.d/
 COPY ariang/ /var/www/html/ariang/
 
 # 暴露端口
