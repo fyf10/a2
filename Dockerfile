@@ -14,10 +14,6 @@ RUN rm -rf /etc/nginx/nginx.conf
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY ariang/ /var/www/html/ariang/
 
-
-RUN nginx -t
-
-
 EXPOSE 80 16800
 
 CMD ["nginx", "-g", "daemon off;"]
