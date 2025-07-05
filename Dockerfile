@@ -15,10 +15,10 @@ COPY aria2.conf aria2.session dht*.dat /home/aria2/
 COPY start1.sh /home/
 COPY aria2c /usr/local/bin/
 # 修正权限设置命令
-RUN chmod +x /usr/local/bin/aria2c /home/start1.sh
+RUN chmod +x /usr/local/bin/aria2c /home/start.sh
 
 # 暴露必要端口
-EXPOSE 80 6800
+EXPOSE 6800
 
 # 设置容器启动命令
-CMD ["/bin/bash", "/home/start1.sh"]
+CMD ["/bin/bash", "/home/start.sh"]
