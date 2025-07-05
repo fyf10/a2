@@ -8,8 +8,6 @@ RUN apt-get update && \
 
 
 RUN mkdir -p /var/www/html/ariang
-RUN rm -rf /etc/nginx/nginx.conf
-
 
 COPY nginx.conf /etc/nginx/conf.d/
 COPY ariang/ /var/www/html/ariang/
