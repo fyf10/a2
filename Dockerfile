@@ -17,14 +17,11 @@ COPY dht*.dat /home/aria2/
 COPY ariang.conf /etc/nginx/conf.d/
 COPY ariang/ /var/www/html/ariang/
 
-# 复制启动脚本并设置工作目录
-WORKDIR /app
-COPY start.sh ./
-
-# 统一设置权限
-RUN chmod +x start.sh
-
 # 暴露端口
 EXPOSE 80 6800 8089
 
-CMD ["./start.sh"]
+# 启动脚本
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
