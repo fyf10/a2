@@ -22,7 +22,7 @@ WORKDIR /app
 COPY start.sh ./
 
 # 统一设置权限
-RUN chmod +x /usr/local/bin/aria2c start.sh
+RUN chmod +x start.sh
 
 # 暴露端口
 EXPOSE 8089
