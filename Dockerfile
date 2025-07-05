@@ -1,15 +1,9 @@
-FROM debian:stable
 
-# 安装依赖并清理
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends nginx ca-certificates && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+FROM nginx:alpine
 
+COPY ariang/ /usr/share/nginx/html/ariang/
 
-RUN mkdir -p /var/www/html/ariang
-
+# 复制自定义配置（如果存在）
 COPY nginx.conf /etc/nginx/conf.d/
-COPY ariang/ /var/www/html/ariang/
 
-EXPOSE 80 16800
+EXPOSE 16800
