@@ -1,4 +1,4 @@
-FROM debian:stable
+FROM debian:stable-slim
 
 # 一次性安装所有依赖并清理缓存
 RUN apt-get update && \
@@ -12,12 +12,10 @@ RUN apt-get update && \
 COPY aria2.conf /home/aria2/
 COPY aria2.session /home/aria2/
 COPY dht*.dat /home/aria2/
+COPY aria2c.service /etc/systemd/system/
 
+RUN systemctl enable aria2c && \
+    systemctl start aria2c
 # 暴露端口
 EXPOSE 80 6800 8089 16800
 
-# 启动脚本
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-
-ENTRYPOINT ["/entrypoint.sh"]
