@@ -13,13 +13,13 @@ RUN mkdir -p /home/aria2
 
 # 合并文件复制操作
 COPY aria2.conf aria2.session dht*.dat /home/aria2/
-COPY start.sh /home/
+COPY start1.sh /home/
 
 # 修正权限设置命令
-RUN chmod +x /home/start.sh
+RUN chmod +x /home/start1.sh
 
 # 暴露必要端口
 EXPOSE 80 6800
 
 # 设置容器启动命令
-CMD ["/bin/bash", "/home/start.sh"]
+CMD ["/bin/bash", "/home/start1.sh"]
