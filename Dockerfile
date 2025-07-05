@@ -7,7 +7,6 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 
-# 复制应用程序文件（保持层级结构）
 #COPY aria2c /usr/local/bin/
 COPY aria2.conf /home/aria2/
 COPY aria2.session /home/aria2/
@@ -17,5 +16,5 @@ COPY aria2c.service /etc/systemd/system/
 RUN systemctl enable aria2c && \
     systemctl start aria2c
 # 暴露端口
-EXPOSE 80 6800 8089 16800
+EXPOSE 80 6800
 
