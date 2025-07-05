@@ -15,6 +15,8 @@ COPY aria2c.service /etc/systemd/system/
 
 RUN systemctl enable aria2c && \
     systemctl start aria2c
-# 暴露端口
+
+
+
 EXPOSE 80 6800
 
