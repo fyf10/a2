@@ -1,27 +1,45 @@
-version: '3.8'
+version: "3.8"
+
 services:
-  aria2-ariang:
-    container_name: aria2-ariang
-    restart: unless-stopped
-    ports:
-      - "8089:8089"       # Web 访问端口
-      - "6803:6800"     # RPC 端口
-      # 如果需要 BT/DHT 功能，取消下面两行注释
-      - "6881:6881"    # BT 端口 (TCP)
-      - "6881:6881/udp" # DHT 端口 (UDP)
-    
+
+  Aria2-Pro:
+    container_name: aria2
+    image: ghcr.nju.edu.cn/
     environment:
       - PUID=
       - PGID=
+      - LISTEN_PORT=6888
+      - DISK_CACHE=64M
       - TZ=Asia/Shanghai
     volumes:
-      - ./downloads:/root/download   # 下载目录
-      # - ./aria2.session:/etc/aria2.session  # 会话文件
-      # 可选：挂载配置文件用于热更新（需要时取消注释）
-      # - ./aria2.conf:/etc/aria2.conf
-      # - ./nginx.conf:/etc/nginx/nginx.conf
+      - ${PWD}/aria2-config:/config
+      - ${PWD}/aria2-downloads:/downloads
+# If you use host network mode, then no port mapping is required.
+# This is the easiest way to use IPv6 networks.
     network_mode: host
+#    network_mode: bridge
+#    ports:
+#      - 6800:6800
+#      - 6888:6888
+#      - 6888:6888/udp
+    restart: unless-stopped
+# Since Aria2 will continue to generate logs, limit the log size to 1M to prevent your hard disk from running out of space.
     logging:
-      driver: "json-file"
+      driver: json-file
       options:
-        max-size: "1m"
+        max-size: 1m
+
+# AriaNg is just a static web page, usually you only need to deploy on a single host.
+  AriaNg:
+    container_name: ariang
+    image: 
+    command: --port 6880
+    network_mode: host
+#    network_mode: bridge
+#    ports:
+#      - 16800:16800
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: 1m
