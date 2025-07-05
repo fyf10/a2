@@ -2,7 +2,7 @@ FROM debian:stable-slim
 
 # 一次性安装所有依赖并清理缓存
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends aria2 ca-certificates && \
+    apt-get install -y --no-install-recommends aria2 systemctl ca-certificates && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
