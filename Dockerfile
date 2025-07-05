@@ -4,10 +4,11 @@ FROM debian:stable
 RUN apt-get update && \
     apt-get install -y --no-install-recommends nginx ca-certificates && \
     apt-get clean && \
-    rm -rf /etc/nginx/nginx.conf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/*
 
 # 创建必要的目录结构
 RUN mkdir -p /var/www/html/ariang
+RUN rm -rf /etc/nginx/nginx.conf
 
 # 复制应用程序文件
 COPY nginx.conf /etc/nginx/nginx.conf  # 关键修复：直接替换主配置文件
