@@ -11,9 +11,9 @@ RUN mkdir -p /home/aria2 /var/www/html/ariang
 
 # 复制应用程序文件（保持层级结构）
 #COPY aria2c /usr/local/bin/
-COPY aria2.conf /home/.config/aria2/
-COPY aria2.session /home/.config/aria2/
-COPY dht*.dat /home/.config/aria2/
+COPY aria2.conf /home/aria2/
+COPY aria2.session /home/aria2/
+COPY dht*.dat /home/aria2/
 COPY ariang.conf /etc/nginx/conf.d/
 COPY ariang/ /var/www/html/ariang/
 
