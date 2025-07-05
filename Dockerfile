@@ -7,7 +7,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # 创建目录结构（避免COPY自动创建目录的权限问题）
-RUN mkdir -p /home/.config/aria2 /var/www/html/ariang
+RUN mkdir -p /home/aria2 /var/www/html/ariang
 
 # 复制应用程序文件（保持层级结构）
 #COPY aria2c /usr/local/bin/
