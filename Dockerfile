@@ -2,7 +2,7 @@ FROM debian:stable
 
 # 一次性安装所有依赖并清理缓存
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends nginx && \
+    apt-get install -y --no-install-recommends nginx nano ca-certificates && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
