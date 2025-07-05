@@ -11,7 +11,7 @@ RUN mkdir -p /var/www/html/ariang
 RUN rm -rf /etc/nginx/nginx.conf
 
 # 复制应用程序文件
-COPY nginx.conf /etc/nginx/nginx.conf  # 关键修复：直接替换主配置文件
+COPY nginx.conf /etc/nginx/sites-available/default  # 关键修复：直接替换主配置文件
 COPY ariang/ /var/www/html/ariang/
 
 # 测试Nginx配置（关键步骤）
