@@ -15,5 +15,3 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY ariang/ /var/www/html/ariang/
 
 EXPOSE 80 16800
-
-CMD ["nginx", "-g", "daemon off;"]
