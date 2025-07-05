@@ -22,6 +22,6 @@ EXPOSE 80 6800 8089
 
 # 启动脚本
 COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+#RUN chmod +x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
