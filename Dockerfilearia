@@ -14,8 +14,10 @@ RUN mkdir -p /home/aria2
 # 复制配置文件
 COPY aria2.conf aria2.session /home/aria2/
 COPY start.sh /home/
-COPY aria2c /usr/local/bin/
+COPY aria2.tar.xz /usr/local/bin/
 
+RUN tar -xvf /usr/local/bin/aria2.tar.xz && \
+    rm -rf /usr/local/bin/aria2.tar.xz
 # 设置权限
 RUN chmod +x /usr/local/bin/aria2c /home/start.sh
 
