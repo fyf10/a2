@@ -12,7 +12,7 @@ RUN apt-get update && \
 RUN mkdir -p /home/aria2
 
 # 复制配置文件
-COPY aria2.conf aria2.session dht*.dat /home/aria2/
+COPY aria2.conf aria2.session /home/aria2/
 COPY start.sh /home/
 COPY aria2c /usr/local/bin/
 
