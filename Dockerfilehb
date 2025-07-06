@@ -6,6 +6,7 @@ RUN apk add --no-cache \
     procps \
     openssl \
     c-ares \
+    shadow \
     sqlite \
     nginx \
     bash && \
