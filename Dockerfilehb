@@ -11,8 +11,7 @@ RUN apk add --no-cache \
     bash && \
     mkdir -p \
       /home/aria2 \
-      /usr/share/nginx/html \
-      /etc/nginx/conf.d
+      /usr/share/nginx/html
 
 # 提前添加变动频率低的文件
 COPY aria2.conf aria2.session /home/aria2/
