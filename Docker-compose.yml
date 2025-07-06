@@ -34,7 +34,7 @@ services:
 # AriaNg is just a static web page, usually you only need to deploy on a single host.
   AriaNg:
     container_name: ariang
-    image: gjcr.nju.edu.cn/
+    image: ghcr.nju.edu.cn/
     #network_mode: host
     network_mode: bridge
     ports:
