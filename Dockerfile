@@ -4,25 +4,25 @@ FROM debian:stable-slim
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         ca-certificates \
-        procps && \  # 添加 procps 用于 pgrep 命令
+        procps && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# 创建专用目录
+
 RUN mkdir -p /home/aria2
 
-# 复制配置文件
+
 COPY aria2.conf aria2.session /home/aria2/
 COPY start.sh /home/
 COPY aria2.tar.xz /usr/local/bin/
 
 RUN tar -xvf /usr/local/bin/aria2.tar.xz && \
     rm -rf /usr/local/bin/aria2.tar.xz
-# 设置权限
+
 RUN chmod +x /usr/local/bin/aria2c /home/start.sh
 
-# 暴露必要端口
+
 EXPOSE 6800
 
-# 使用 ENTRYPOINT 指定容器主进程
+
 ENTRYPOINT ["/home/start.sh"]
