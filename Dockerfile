@@ -8,6 +8,6 @@ RUN apk add --no-cache \
 COPY ariang/ /usr/share/nginx/html/ariang/
 COPY ariang.conf /etc/nginx/conf.d/
 
-RUN chmod -R 755 /usr/share/nginx/html/ariang
+#RUN chmod -R 755 /usr/share/nginx/html/ariang
 
 EXPOSE 8089
