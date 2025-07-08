@@ -1,8 +1,0 @@
- server {
-     listen 8089;
-     server_name ariang;
-     location / {
-          root /var/www/html/aria/;
-          index index.html;
-        }
-        }
