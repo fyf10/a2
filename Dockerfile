@@ -6,7 +6,7 @@ RUN apk add --no-cache \
     rm -rf /var/cache/apk/*
 
 COPY ariang/ /usr/share/nginx/html/ariang/
-COPY ariang.conf /etc/nginx/conf.d/
+COPY nginx.conf /etc/nginx/conf.d/
 
 #RUN chmod -R 755 /usr/share/nginx/html/ariang
 
