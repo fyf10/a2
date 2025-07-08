@@ -3,7 +3,8 @@ FROM alpine:3.22.0
 RUN apk add --no-cache \
     ca-certificates \
     nginx && \
-    rm -rf /var/cache/apk/* /etc/nginx/conf.d/nginx.conf
+    rm -rf /var/cache/apk/* && \
+    mkdir -p /run/nginx
 
 COPY ariang/ /usr/share/nginx/html/ariang/
 COPY ariang.conf /etc/nginx/conf.d/
