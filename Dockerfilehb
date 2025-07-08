@@ -1,6 +1,5 @@
 FROM alpine:3.22.0
 
-# 合并所有操作到单层以减少镜像层数
 RUN apk add --no-cache \
     ca-certificates \
     procps \
@@ -12,12 +11,12 @@ RUN apk add --no-cache \
     bash && \
     mkdir -p \
       /home/aria2 \
-      /usr/share/nginx/html
+      /var/www/html
 
 # 提前添加变动频率低的文件
 COPY aria2.conf aria2.session /home/aria2/
 COPY start.sh /home/
-COPY nginx.conf /etc/nginx/conf.d/
+COPY ariang.conf /etc/nginx/conf.d/
 
 # 处理二进制文件（合并解压与清理）
 COPY aria2.tar.xz /tmp/
@@ -26,7 +25,7 @@ RUN tar -xvf /tmp/aria2.tar.xz -C /usr/local/bin/ && \
     chmod +x /usr/local/bin/aria2c
 
 # 最后添加变动频率高的Web文件
-COPY --chmod=755 ariang/ /usr/share/nginx/html/ariang/
+COPY --chmod=755 ariang/ /var/www/html/ariang/
 RUN chmod +x /home/start.sh
 
 EXPOSE 8089 6800
