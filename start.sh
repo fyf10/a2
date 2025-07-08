@@ -3,6 +3,15 @@
 # 启动aria2c后台进程
 aria2c --conf-path="/home/aria2/aria2.conf" --daemon=true
 
+# 验证启动是否成功
+sleep 3  # 短暂延迟确保进程状态更新
+if ! pgrep -x "aria2c" >/dev/null; then
+    echo "aria2c启动失败！请检查配置文件路径和权限" >&2
+    exit 1  # 退出容器并返回错误码
+else
+    echo "aria2c成功启动 (PID: $(pgrep -x "aria2c"))"
+fi
+
 # 捕获退出信号
 trap 'shutdown' SIGTERM SIGINT
 
@@ -24,7 +33,7 @@ pid=$(pgrep aria2c)
 
 # 持续检查进程状态
 while sleep 3600 & wait $!; do
-    if ! pgrep aria2c > /dev/null; then
+    if ! pgrep aria2c >/dev/null; then
         echo "aria2c进程已停止，容器将退出"
         exit 1
     fi
