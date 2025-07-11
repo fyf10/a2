@@ -6,11 +6,11 @@ RUN apk add --no-cache \
     rm -rf /var/cache/apk/* /etc/nginx/nginx.conf
 
 COPY ariang/ /var/www/html/ariang/
-#COPY ariang.conf /etc/nginx/conf.d/
+COPY ariang.conf /etc/nginx/conf.d/
 COPY nginx.conf /etc/nginx/
 
 #RUN chmod -R 755 /var/www/html/ariang
 
-#EXPOSE 8089
+EXPOSE 8089
 
 #CMD ["nginx", "-g", "daemon off;"]
