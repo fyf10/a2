@@ -13,4 +13,4 @@ COPY nginx.conf /etc/nginx/
 
 EXPOSE 8089
 
-#CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
