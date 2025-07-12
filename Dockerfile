@@ -8,21 +8,18 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-
 RUN mkdir -p /home/aria2
-
 
 COPY aria2.conf aria2.session /home/aria2/
 COPY start.sh /home/
-COPY aria2.tar.xz /usr/local/bin/
 
-RUN tar -xvf /usr/local/bin/aria2.tar.xz && \
-    #rm -rf /usr/local/bin/aria2.tar.xz
+COPY aria2.tar.xz /tmp/
+RUN tar -xvf /tmp/aria2.tar.xz -C /usr/local/bin/ && \
+    rm -f /tmp/aria2.tar.xz && \
+    chmod +x /usr/local/bin/aria2c
 
-RUN chmod +x /usr/local/bin/aria2c /home/start.sh
-
+RUN chmod +x /home/start.sh
 
 EXPOSE 6800
-
 
 #ENTRYPOINT ["/home/start.sh"]
