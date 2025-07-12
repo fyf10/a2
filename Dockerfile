@@ -1,4 +1,4 @@
-FROM debian:stable-slim
+FROM debian:stable
 
 # 合并所有操作到单个RUN指令减少层数
 RUN apt-get update && \
