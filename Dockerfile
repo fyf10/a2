@@ -19,4 +19,4 @@ RUN chmod +x /home/start.sh
 
 EXPOSE 6800
 
-ENTRYPOINT ["/home/start.sh"]
+#ENTRYPOINT ["/home/start.sh"]
