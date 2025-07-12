@@ -1,4 +1,4 @@
-FROM alpine:3.22.0
+FROM debian：stable-slim
 
 RUN apk add --no-cache \
     ca-certificates \
