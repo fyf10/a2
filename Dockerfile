@@ -3,7 +3,7 @@ FROM debian:stable
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         ca-certificates \
-        tar \
+        xz-utils \
         procps && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /var/cache/apt/* && \
