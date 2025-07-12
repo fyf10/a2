@@ -18,12 +18,11 @@ RUN tar -xvf /tmp/aria2.tar.xz -C /usr/local/bin/ && \
 COPY aria2.conf aria2.session /home/aria2/
 COPY ariang/ /var/www/html/ariang/
 COPY ariang.conf /etc/nginx/conf.d/
-COPY start.sh /home/
+COPY starthb.sh /home/
 
 RUN chmod -R 755 /var/www/html/ariang && \
     chmod +x /home/start.sh
 
-EXPOSE 6800
-EXPOSE 8089
+EXPOSE 6800 8089
 
-CMD ["/home/start.sh", "nginx", "-g", "daemon off;"]
+CMD ["/home/start.sh"]
