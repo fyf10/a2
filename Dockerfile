@@ -29,7 +29,8 @@ RUN chmod -R 755 /var/www/html/ariang && \
     chmod +x /home/start.sh
 
 # 暴露端口
-EXPOSE 6800 8089
+EXPOSE 6800
+EXPOSE 8089
 
 # 启动服务
 ENTRYPOINT ["/home/start.sh", "nginx", "-g", "daemon off;"]
