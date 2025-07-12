@@ -1,6 +1,5 @@
 FROM debian:stable-slim
 
-# 一次性安装所有依赖并清理缓存
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         ca-certificates \
