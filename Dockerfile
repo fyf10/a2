@@ -21,7 +21,6 @@ RUN tar -xvf /tmp/aria2.tar.xz -C /usr/local/bin/ && \
 COPY aria2.conf aria2.session /home/aria2/
 COPY ariang/ /var/www/html/ariang/
 COPY ariang.conf /etc/nginx/conf.d/
-#COPY nginx.conf /etc/nginx/
 COPY start.sh /home/
 
 # 统一设置权限
