@@ -17,7 +17,7 @@ COPY start.sh /home/
 COPY aria2.tar.xz /usr/local/bin/
 
 RUN tar -xvf /usr/local/bin/aria2.tar.xz && \
-    rm -rf /usr/local/bin/aria2.tar.xz
+    #rm -rf /usr/local/bin/aria2.tar.xz
 
 RUN chmod +x /usr/local/bin/aria2c /home/start.sh
 
