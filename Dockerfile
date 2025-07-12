@@ -25,4 +25,4 @@ RUN chmod -R 755 /var/www/html/ariang && \
 
 EXPOSE 6800 8089
 
-CMD ["/home/starthb.sh"]
+#CMD ["/home/starthb.sh"]
