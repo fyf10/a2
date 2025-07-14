@@ -1,4 +1,4 @@
-FROM debian:stable
+FROM debian:stable-slim
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
@@ -25,4 +25,4 @@ RUN chmod -R 755 /var/www/html/ariang && \
 
 EXPOSE 6800 8089
 
-CMD ["/home/1.sh"]
+#CMD ["/home/1.sh"]
