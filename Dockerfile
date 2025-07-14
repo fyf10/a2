@@ -1,7 +1,7 @@
 FROM nginx:alpine
 
 COPY ariang/ /usr/share/nginx/html/ariang/
-COPY ariang.conf /etc/nginx/conf.d/
+COPY ar.conf /etc/nginx/conf.d/
 
 RUN chmod -R 755 /usr/share/nginx/html/ariang
 
