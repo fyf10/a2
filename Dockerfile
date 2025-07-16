@@ -15,4 +15,4 @@ COPY ariang.conf /etc/nginx/conf.d/
 
 EXPOSE 8089
 
-CMD ["nginx", "-g", "daemon off;"]
+#CMD ["nginx", "-g", "daemon off;"]
