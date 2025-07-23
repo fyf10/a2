@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
 
-  Aria2-Pro:
+  Aria2:
     container_name: aria2
     image: ghcr.nju.edu.cn/
     environment:
