@@ -20,7 +20,7 @@ COPY ariang/ /var/www/html/ariang/
 COPY ariang.conf /etc/nginx/conf.d/
 COPY starthb.sh /home/
 
-RUN chmod +x /home/starthb.sh&& \
+RUN chmod +x /home/starthb.sh && \
     #chmod -R 755 /var/www/html/ariang
 
 EXPOSE 6800 8089
