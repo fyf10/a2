@@ -9,7 +9,6 @@ RUN apt-get update && \
 
 COPY ariang/ /var/www/html/ariang/
 COPY ariang.conf /etc/nginx/conf.d/
-#COPY nginx.conf /etc/nginx/
 
 #RUN chmod -R 755 /var/www/html/ariang
 
